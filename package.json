@@ -1,0 +1,17 @@
+{
+  "name": "selyna-1",
+  "version": "1.0.0",
+  "description": "Selyna personal page with Vercel Web Analytics",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'Build completed'",
+    "lint": "echo 'No linting configured for static HTML'"
+  },
+  "keywords": ["static", "html", "vercel", "analytics"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@vercel/analytics": "^1.4.1"
+  }
+}
