@@ -58,7 +58,19 @@
             transform: scale(1.05);
             box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.2);
         }
-    </style>
+    </style>        /* Auto subtle vibration */
+        @keyframes subtleVibrate {
+            0%   { transform: translateX(0); }
+            20%  { transform: translateX(-4px); }
+            40%  { transform: translateX(4px); }
+            60%  { transform: translateX(-3px); }
+            80%  { transform: translateX(3px); }
+            100% { transform: translateX(0); }
+        }
+
+        .vibrate {
+            animation: subtleVibrate 0.5s ease-in-out;
+        }
 </head>
 <body class="min-h-screen text-neutral-800 relative">
 
@@ -118,5 +130,21 @@
         </div>
     </div>
 
-</body>
+</body>    <script>
+        const exclusiveCard = document.querySelector('.exclusive-card');
+        
+        function triggerVibration() {
+            if (exclusiveCard) {
+                exclusiveCard.classList.add('vibrate');
+                setTimeout(() => {
+                    exclusiveCard.classList.remove('vibrate');
+                }, 600);
+            }
+        }
+
+        // Auto vibrate every 8-15 seconds
+        setInterval(() => {
+            triggerVibration();
+        }, Math.random() * 7000 + 8000);
+    </script>
 </html>
