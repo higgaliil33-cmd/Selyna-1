@@ -7,7 +7,6 @@
     <title>Selyna</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
     <style>
         body {
@@ -33,14 +32,31 @@
         .profile-container:hover .profile-img {
             transform: scale(1.08);
         }
-        
-        .main-card {
+
+        /* Vibration on Exclusive Card */
+        @keyframes subtleVibrate {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-3px); }
+            75% { transform: translateX(3px); }
+            100% { transform: translateX(0); }
+        }
+
+        .exclusive-card {
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        .main-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 30px 40px -15px rgba(0, 0, 0, 0.2);
+        .exclusive-card:hover {
+            transform: translateY(-12px);
+            animation: subtleVibrate 0.4s ease-in-out;
+        }
+
+        .small-box {
+            transition: all 0.4s ease;
+        }
+        
+        .small-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.2);
         }
     </style>
 </head>
@@ -67,9 +83,10 @@
 
         <!-- Exclusive Content Card -->
         <a href="https://www.fanvue.com/zheng" target="_blank"
-           class="main-card w-full bg-white/95 backdrop-blur-xl border border-white/50 rounded-3xl p-8 flex items-center gap-6 hover:bg-white">
+           class="exclusive-card w-full bg-white/95 backdrop-blur-xl border border-white/50 rounded-3xl p-8 flex items-center gap-6 hover:bg-white mb-8">
             
-            <div class="w-24 h-24 flex-shrink-0 rounded-2xl overflow-hidden border-2 border-purple-200">
+            <!-- Bigger Square Image -->
+            <div class="w-28 h-28 flex-shrink-0 rounded-2xl overflow-hidden border-2 border-purple-200">
                 <img src="https://i.postimg.cc/02r7zgKx/stick-tounge-out-2K-202605232030.jpg" 
                      alt="Exclusive" 
                      class="w-full h-full object-cover">
@@ -78,11 +95,23 @@
             <div class="flex-1">
                 <span class="font-bold text-2xl block text-neutral-900">Exclusive Content</span>
                 <p class="text-purple-600 font-medium mt-1">18+ • Private Photos & Videos</p>
-                <p class="text-neutral-500 text-sm mt-3">Only for true fans 💕</p>
+                <p class="text-neutral-500 text-sm mt-3">My spicier side 💕</p>
             </div>
 
             <span class="text-4xl text-purple-500">→</span>
         </a>
+
+        <!-- Two Smaller Image Boxes -->
+        <div class="w-full grid grid-cols-2 gap-4">
+            <a href="#" class="small-box block bg-white/90 backdrop-blur-xl rounded-3xl overflow-hidden aspect-square border border-white/50">
+                <img id="small1" src="https://via.placeholder.com/300" 
+                     class="w-full h-full object-cover">
+            </a>
+            <a href="#" class="small-box block bg-white/90 backdrop-blur-xl rounded-3xl overflow-hidden aspect-square border border-white/50">
+                <img id="small2" src="https://via.placeholder.com/300" 
+                     class="w-full h-full object-cover">
+            </a>
+        </div>
 
         <div class="mt-auto text-center text-white/60 text-xs pt-16">
             SELYNA
