@@ -5,14 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selyna</title>
-    
+   
     <script src="https://cdn.tailwindcss.com"></script>
-
     <style>
         body {
             font-family: system-ui, -apple-system, sans-serif;
         }
-        
+       
         .background-img {
             background-image: url('https://i.postimg.cc/9QRCszW5/make-sure-my-model-from-202605180405.jpg');
             background-size: cover;
@@ -20,7 +19,7 @@
             filter: blur(20px) brightness(0.7);
             z-index: -1;
         }
-        
+       
         .profile-img {
             width: 160px;
             height: 160px;
@@ -28,37 +27,35 @@
             transition: transform 0.5s ease;
             box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.3);
         }
-        
+       
         .profile-container:hover .profile-img {
             transform: scale(1.08);
         }
 
         /* Vibration on Exclusive Card */
         @keyframes subtleVibrate {
-            0% { transform: translateX(0); }
-            25% { transform: translateX(-3px); }
-            75% { transform: translateX(3px); }
+            0%   { transform: translateX(0); }
+            20%  { transform: translateX(-4px); }
+            40%  { transform: translateX(4px); }
+            60%  { transform: translateX(-3px); }
+            80%  { transform: translateX(3px); }
             100% { transform: translateX(0); }
         }
 
         .exclusive-card {
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
+       
         .exclusive-card:hover {
             transform: translateY(-12px);
-            animation: subtleVibrate 0.4s ease-in-out;
         }
 
-        .small-box {
-            transition: all 0.4s ease;
+        /* Auto vibration class */
+        .vibrate {
+            animation: subtleVibrate 0.5s ease-in-out;
         }
-        
-        .small-box:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.2);
-        }
-    </style>   
+    </style>
+</head>
 <body class="min-h-screen text-neutral-800 relative">
 
     <!-- Blurred Background -->
@@ -69,8 +66,8 @@
         <!-- Profile Picture -->
         <div class="profile-container mb-8">
             <div class="rounded-3xl overflow-hidden border-4 border-white/90 bg-white">
-                <img id="profileImage" 
-                     src="https://i.postimg.cc/ht93Jqsc/twirl-hair-with-fingers-tounge-202606040157.jpg" 
+                <img id="profileImage"
+                     src="https://i.postimg.cc/ht93Jqsc/twirl-hair-with-fingers-tounge-202606040157.jpg"
                      alt="Selyna"
                      class="profile-img">
             </div>
@@ -83,31 +80,29 @@
         <!-- Exclusive Content Card -->
         <a href="https://www.fanvue.com/zheng" target="_blank"
            class="exclusive-card w-full bg-white/95 backdrop-blur-xl border border-white/50 rounded-3xl p-8 flex items-center gap-6 hover:bg-white mb-8">
-            
+           
             <!-- Bigger Square Image -->
             <div class="w-28 h-28 flex-shrink-0 rounded-2xl overflow-hidden border-2 border-purple-200">
-                <img src="https://i.postimg.cc/GhP5tCqr/IMG-1220.jpg" 
-                     alt="Exclusive" 
+                <img src="https://i.postimg.cc/GhP5tCqr/IMG-1220.jpg"
+                     alt="Exclusive"
                      class="w-full h-full object-cover">
             </div>
-
             <div class="flex-1">
                 <span class="font-bold text-2xl block text-neutral-900">Exclusive Content</span>
                 <p class="text-purple-600 font-medium mt-1">18+ • Private Photos & Videos</p>
                 <p class="text-neutral-500 text-sm mt-3">My spicier side 💕</p>
             </div>
-
             <span class="text-4xl text-purple-500">→</span>
         </a>
 
         <!-- Two Smaller Image Boxes -->
         <div class="w-full grid grid-cols-2 gap-4">
             <a href="#" class="small-box block bg-white/90 backdrop-blur-xl rounded-3xl overflow-hidden aspect-square border border-white/50">
-                <img id="small1" src="https://i.postimg.cc/wxCVDG7Q/remove-chain-2K-202606061942.jpg" 
+                <img id="small1" src="https://i.postimg.cc/wxCVDG7Q/remove-chain-2K-202606061942.jpg"
                      class="w-full h-full object-cover">
             </a>
             <a href="#" class="small-box block bg-white/90 backdrop-blur-xl rounded-3xl overflow-hidden aspect-square border border-white/50">
-                <img id="small2" src="https://i.postimg.cc/pTNTsz8C/Untitled-design.png" 
+                <img id="small2" src="https://i.postimg.cc/pTNTsz8C/Untitled-design.png"
                      class="w-full h-full object-cover">
             </a>
         </div>
@@ -117,6 +112,23 @@
         </div>
     </div>
 
-</body> 
+    <!-- Auto Vibration Script -->
+    <script>
+        const exclusiveCard = document.querySelector('.exclusive-card');
+        
+        function triggerVibration() {
+            if (exclusiveCard) {
+                exclusiveCard.classList.add('vibrate');
+                setTimeout(() => {
+                    exclusiveCard.classList.remove('vibrate');
+                }, 600);
+            }
+        }
+
+        // Auto vibrate every 8-15 seconds
+        setInterval(() => {
+            triggerVibration();
+        }, Math.random() * 7000 + 8000);
     </script>
+</body>
 </html>
