@@ -11,128 +11,80 @@
 
     <style>
         body {
-            background: linear-gradient(145deg, #ffd6e7, #ffe9f2);
             font-family: system-ui, -apple-system, sans-serif;
         }
         
-        .hero-img {
-            height: 420px;
-            object-fit: cover;
-            transition: transform 0.6s ease;
+        .background-img {
+            background-image: url('https://i.postimg.cc/02r7zgKx/stick-tounge-out-2K-202605232030.jpg');
+            background-size: cover;
+            background-position: center;
+            filter: blur(20px) brightness(0.7);
+            z-index: -1;
         }
         
-        .hero-container:hover .hero-img {
+        .profile-img {
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .profile-container:hover .profile-img {
             transform: scale(1.08);
         }
         
-        /* Gradient fade for hero */
-        .hero-overlay {
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
-        }
-
-        /* Gradient fade for exclusive icon */
-        .exclusive-img-container {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .exclusive-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .exclusive-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 50%;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
-        }
-
-        .social-icon {
-            transition: all 0.3s ease;
-        }
-        
-        .social-icon:hover {
-            transform: scale(1.3) rotate(8deg);
-        }
-        
-        .big-card {
+        .main-card {
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        .big-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 30px -10px rgb(0 0 0 / 0.15);
+        .main-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 40px -15px rgba(0, 0, 0, 0.2);
         }
     </style>
 </head>
-<body class="min-h-screen text-neutral-800 pb-12">
+<body class="min-h-screen text-neutral-800 relative">
 
-    <div class="max-w-md mx-auto bg-white min-h-screen shadow-2xl overflow-hidden">
+    <!-- Blurred Background -->
+    <div class="background-img fixed inset-0"></div>
 
-        <!-- Hero Section -->
-        <div class="hero-container relative">
-            <img id="heroImage" 
-                 src="https://i.postimg.cc/xTwLTgSd/make-sure-my-model-from-202605281415.jpg" 
-                 alt="Selyna"
-                 class="hero-img w-full">
+    <div class="max-w-md mx-auto relative min-h-screen flex flex-col items-center pt-12 pb-20 px-6">
 
-            <div class="hero-overlay absolute bottom-0 left-0 right-0 h-1/2"></div>
-
-            <div class="absolute bottom-8 left-0 right-0 text-center z-10">
-                <h1 id="name" class="text-4xl font-bold text-white drop-shadow-xl">Selyna</h1>
-                <p id="username" class="text-white/90 text-xl mt-1">@nurse_selyna</p>
+        <!-- Profile Picture -->
+        <div class="profile-container mb-8">
+            <div class="rounded-3xl overflow-hidden border-4 border-white/90 bg-white">
+                <img id="profileImage" 
+                     src="https://i.postimg.cc/02r7zgKx/stick-tounge-out-2K-202605232030.jpg" 
+                     alt="Selyna"
+                     class="profile-img">
             </div>
         </div>
 
-        <!-- Social Icons -->
-        <div class="flex justify-center gap-8 py-8 bg-white">
-            <a href="https://www.instagram.com/nurse_selyna" target="_blank" class="social-icon text-pink-600">
-                <i class="fa-brands fa-instagram text-5xl"></i>
-            </a>
-        </div>
+        <!-- Name -->
+        <h1 id="name" class="text-5xl font-bold text-white drop-shadow-xl text-center">Selyna</h1>
+        <p id="username" class="text-white/80 text-xl mt-1 mb-12">@nurse_selyna</p>
 
-        <!-- Main Links -->
-        <div class="px-6 space-y-6 pb-12">
+        <!-- Exclusive Content Card -->
+        <a href="https://www.fanvue.com/zheng" target="_blank"
+           class="main-card w-full bg-white/95 backdrop-blur-xl border border-white/50 rounded-3xl p-8 flex items-center gap-6 hover:bg-white">
+            
+            <div class="w-24 h-24 flex-shrink-0 rounded-2xl overflow-hidden border-2 border-purple-200">
+                <img src="https://i.postimg.cc/02r7zgKx/stick-tounge-out-2K-202605232030.jpg" 
+                     alt="Exclusive" 
+                     class="w-full h-full object-cover">
+            </div>
 
-            <!-- Big Exclusive Content Button -->
-            <a href="https://www.fanvue.com/zheng" target="_blank"
-               class="big-card block bg-white border-2 border-purple-300 rounded-3xl p-6 flex items-center gap-6 hover:bg-purple-50">
-                
-                <!-- Exclusive Image with Fade -->
-                <div class="exclusive-img-container w-20 h-20 flex-shrink-0 rounded-2xl overflow-hidden border border-purple-200">
-                    <img src="https://i.postimg.cc/DyrwLcX4/make-sure-my-model-from-202605180403.jpg" 
-                         alt="Exclusive" 
-                         class="exclusive-img">
-                    <div class="exclusive-overlay"></div>
-                </div>
+            <div class="flex-1">
+                <span class="font-bold text-2xl block text-neutral-900">Exclusive Content</span>
+                <p class="text-purple-600 font-medium mt-1">18+ • Private Photos & Videos</p>
+                <p class="text-neutral-500 text-sm mt-3">Only for true fans 💕</p>
+            </div>
 
-                <div class="flex-1">
-                    <span class="font-bold text-2xl block">Exclusive Content</span>
-                    <p class="text-purple-600 font-medium">18+ • Private Photos & Videos</p>
-                </div>
-                <span class="text-purple-600 text-3xl">→</span>
-            </a>
+            <span class="text-4xl text-purple-500">→</span>
+        </a>
 
-            <!-- Instagram Button -->
-            <a href="https://www.instagram.com/nurse_selyna" target="_blank"
-               class="big-card block bg-white border border-neutral-200 rounded-3xl p-6 flex items-center gap-5 hover:bg-neutral-50">
-                <div class="w-14 h-14 bg-gradient-to-br from-pink-500 via-purple-500 to-orange-500 rounded-2xl flex items-center justify-center text-white flex-shrink-0">
-                    <i class="fa-brands fa-instagram text-4xl"></i>
-                </div>
-                <div class="flex-1">
-                    <span class="font-semibold text-xl">Instagram</span>
-                </div>
-                <span class="text-pink-500 text-2xl">→</span>
-            </a>
-
-        </div>
-
-        <div class="text-center text-neutral-400 text-xs pb-10">
+        <div class="mt-auto text-center text-white/60 text-xs pt-16">
             SELYNA
         </div>
     </div>
